@@ -95,10 +95,13 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
     HAL_Delay(500);
 
 
-##Firing angle tested from 0° → 150° and back using HAL_Delay##
-##Pulse width + firing angle limited < 165° to avoid firing next AC cycle##
-##UART Communication##
-##MCU communicates with PC via UART:##
+##Firing angle tested from 0° → 150° and back using HAL_Delay
+
+Pulse width + firing angle limited < 165° to avoid firing next AC cycle
+
+UART Communication
+
+MCU communicates with PC via UART:
 
 <img width="1200" height="711" alt="Screenshot 2025-10-05 210003" src="https://github.com/user-attachments/assets/cf1673fa-1955-4ff8-a5d8-0401f5a2ec5f" />
 <img width="970" height="561" alt="Screenshot 2025-10-05 210030" src="https://github.com/user-attachments/assets/5501a5ef-e16b-4fc7-abdd-6a5f855ec722" />
