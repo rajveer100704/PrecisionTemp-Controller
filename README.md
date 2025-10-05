@@ -51,9 +51,10 @@ https://1drv.ms/i/c/55457142c1bb9d78/EfbkvH8f5zNAqqfYrpcehC8BxR0wnj5WAkPA4ryN4AC
 
 ### TRIAC Triggering via Timer
 The MCU uses **Timer 2 output compare** to trigger the TRIAC based on zero-cross detection.  
-- Prescaler: 36  
+- Prescaler: 36 
 - Timer clock: 2 MHz (0.5 µs per tick)  
-- Full sine wave: 40,000 ticks (50 Hz)  
+- Full sine wave: 40,000 ticks (50 Hz)
+ <img width="529" height="473" alt="Screenshot 2025-10-05 203655" src="https://github.com/user-attachments/assets/07810583-d686-4f05-a341-bc487ef99682" />
 
 ![Timer Output Compare](https://trello-attachments.s3.amazonaws.com/5cee4d3b0bae3033dfba95f5/5d09d2f828969932f64ef562/c40675b38a1cc59b268e83d3d170c1e2/output_compare.PNG)
 *Figure 4: Output compare mode on Timer 2*
