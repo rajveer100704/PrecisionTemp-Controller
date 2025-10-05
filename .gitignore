@@ -1,0 +1,38 @@
+# STM32Cube / Keil / PlatformIO / IDE files
+
+# Build / binary folders
+/build/
+/Debug/
+/Release/
+/bin/
+/obj/
+/*.hex
+/*.elf
+/*.bin
+/*.axf
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Eclipse / CDT
+.project
+.cproject
+.settings/
+
+# PlatformIO
+.pio/
+
+# STM32CubeMX
+*.ioc.bak
+*.ioc.backup
+
+# Backup / temporary files
+*~
+*.swp
+*.swo
+*.bak
+
+# Windows specific
+Thumbs.db
+.DS_Store
