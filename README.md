@@ -81,27 +81,24 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
 
 *Testing TRIAC Firing Angle*
 
-config_pulse(&ccr3Data, i, 40);
-if(resetState == false)
-    i++;
-else
-    i--;
+    config_pulse(&ccr3Data, i, 40);
+    if(resetState == false)
+        i++;
+    else
+        i--;
 
-if(i >= 150)
-    resetState = true;
-else if(i <= 0)
-    resetState = false;
+    if(i >= 150)
+        resetState = true;
+    else if(i <= 0)
+        resetState = false;
 
-HAL_Delay(500);
+    HAL_Delay(500);
 
 
-Firing angle tested from 0° → 150° and back using HAL_Delay
-
-Pulse width + firing angle limited < 165° to avoid firing next AC cycle
-
-UART Communication
-
-MCU communicates with PC via UART:
+*Firing angle tested from 0° → 150° and back using HAL_Delay*
+*Pulse width + firing angle limited < 165° to avoid firing next AC cycle*
+*UART Communication*
+*MCU communicates with PC via UART:*
 
 Transmit:
 
