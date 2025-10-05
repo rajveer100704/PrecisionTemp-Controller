@@ -1,4 +1,4 @@
-<img width="1789" height="1008" alt="image" src="https://github.com/user-attachments/assets/7d75545b-be78-40f1-a55c-f225288a44f7" /><img width="1789" height="1008" alt="image" src="https://github.com/user-attachments/assets/c2a47393-f09d-49bf-8e33-b0207ddc5fdc" /># PrecisionTemp Controller
+# PrecisionTemp Controller
 
 ## Overview
 **PrecisionTemp Controller** is an MCU-based heating system developed using **STM32F103** microcontrollers. It implements a **PID control algorithm** to maintain a target temperature, allowing users to set and monitor temperature via **UART communication** with a PC.  
