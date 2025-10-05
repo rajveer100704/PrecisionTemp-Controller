@@ -43,7 +43,7 @@ The zero-crossing circuit outputs a rising/falling edge whenever the AC input cr
 **Output Example:**  
 - Rising/falling edge occurs ~96.7 μs after zero-cross detection  
 - Voltage swings from 0–3.3V for MCU logic input  
-
+https://1drv.ms/i/c/55457142c1bb9d78/EfbkvH8f5zNAqqfYrpcehC8BxR0wnj5WAkPA4ryN4ACmUg
 
 *Figure 3: Input AC vs zero-cross output signal*
 
