@@ -43,7 +43,8 @@ The zero-crossing circuit outputs a rising/falling edge whenever the AC input cr
 **Output Example:**  
 - Rising/falling edge occurs ~96.7 μs after zero-cross detection  
 - Voltage swings from 0–3.3V for MCU logic input  
-https://1drv.ms/i/c/55457142c1bb9d78/EfbkvH8f5zNAqqfYrpcehC8BxR0wnj5WAkPA4ryN4ACmUg
+<img width="641" height="503" alt="Screenshot 2025-10-05 203224" src="https://github.com/user-attachments/assets/a9fd6be6-1490-4f0b-877e-d1e9efed990c" />
+
 
 *Figure 3: Input AC vs zero-cross output signal*
 
@@ -69,3 +70,100 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
 ##TriacTriggerCallback: Interrupt triggered at CNT==0 and CNT==CCR3
 ##config_pulse: Calculates firing angle and pulse width
 ##HAL_TIM_OC_Start_IT: Enables timer interrupt
+
+```
+###TRIAC Triggering Circuit
+```
+<img width="553" height="483" alt="Screenshot 2025-10-05 204422" src="https://github.com/user-attachments/assets/33850bad-efe5-47d6-8b10-eb94a18e568b" />
+
+<img width="549" height="516" alt="Screenshot 2025-10-05 204501" src="https://github.com/user-attachments/assets/ecd146ca-000b-4c4a-8379-5ece9389e7e1" />
+
+```
+*Figure 5: Negative gate trigger for TRIAC with lamp load*
+
+Testing TRIAC Firing Angle
+
+config_pulse(&ccr3Data, i, 40);
+if(resetState == false)
+    i++;
+else
+    i--;
+
+if(i >= 150)
+    resetState = true;
+else if(i <= 0)
+    resetState = false;
+
+HAL_Delay(500);
+
+
+Firing angle tested from 0° → 150° and back using HAL_Delay
+
+Pulse width + firing angle limited < 165° to avoid firing next AC cycle
+
+UART Communication
+
+MCU communicates with PC via UART:
+
+Transmit:
+
+HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+
+
+Receive (interrupt-based):
+
+void interruptRxTx(UART_HandleTypeDef *huart, UartInfo *uart);
+
+
+Features:
+
+Set target temperature (set temp)
+
+Start/stop temperature logging
+
+Command validation and echo feedback
+
+
+Figure 6: UART communication example
+
+Temperature Measurement
+
+SPI interface with MAX6675
+
+Resolution: 0.25°C
+
+Functions:
+
+float getTemp(SPI_HandleTypeDef *hspi);
+float calculateTemp(uint8_t *TempData);
+
+
+
+Figure 7: Testing getTemp function
+
+PID Control
+
+Function:
+
+int findPIDValue(PidInfo *pidInfo, double actualTemp, uint32_t currentTime);
+
+
+Inputs: actual temperature, target temperature, PID constants (Kp, Ki, Kd)
+
+Output: firing angle for TRIAC
+
+PID Tuning Method:
+
+Start with Kp, Ki, Kd = 0
+
+Increase Kp until oscillation is observed
+
+Adjust Ki to stabilize integral
+
+Adjust Kd to reduce overshoot
+
+Demo Videos:
+
+Kp=10, Ki=0.2, Kd=0: YouTube Demo
+
+Kp=10, Ki=0.2, Kd=0.5: YouTube Demo
