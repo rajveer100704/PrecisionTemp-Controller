@@ -31,14 +31,14 @@ This project can be applied to **ovens, heaters, and temperature-critical embedd
 ---
 
 ## Circuit Diagram
-![CubeMX Setup]<img width="1856" height="594" alt="Screenshot 2025-10-05 201806" src="https://github.com/user-attachments/assets/4b8c5931-74cc-461d-9da1-a2771c65fe6e" />
+<img width="1856" height="594" alt="Screenshot 2025-10-05 201806" src="https://github.com/user-attachments/assets/4b8c5931-74cc-461d-9da1-a2771c65fe6e" />
 
-*Fig*
-ure 1: STM32CubeMX pin configuration and whole setup
+*Figure 1: STM32CubeMX pin configuration and whole setup*
 ### Zero-Crossing Circuit
 The zero-crossing circuit outputs a rising/falling edge whenever the AC input crosses 0V. It uses a **comparator (LM311N)** and **opto-coupler (4N25)** for isolation.
 
-![Zero Crossing Circuit](https://trello-attachments.s3.amazonaws.com/5cee4d3b0bae3033dfba95f5/5d01dab615a0d020cbee4e42/32897f1bd7d5a39010b1fb5553a9e847/image.png)
+<img width="871" height="566" alt="Screenshot 2025-10-05 185638" src="https://github.com/user-attachments/assets/14120671-5f2a-45cf-a1e7-1efec7600cc6" />
+d01dab615a0d020cbee4e42/32897f1bd7d5a39010b1fb5553a9e847/image.png)
 *Figure 2: Zero-crossing detection circuit*
 
 **Output Example:**  
