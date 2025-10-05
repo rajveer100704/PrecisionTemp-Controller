@@ -99,27 +99,24 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
 *Pulse width + firing angle limited < 165° to avoid firing next AC cycle*
 *UART Communication*
 *MCU communicates with PC via UART:*
-
-Transmit:
-
-HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-
-
-Receive (interrupt-based):
-
-void interruptRxTx(UART_HandleTypeDef *huart, UartInfo *uart);
+<img width="1200" height="711" alt="Screenshot 2025-10-05 210003" src="https://github.com/user-attachments/assets/cf1673fa-1955-4ff8-a5d8-0401f5a2ec5f" />
+<img width="970" height="561" alt="Screenshot 2025-10-05 210030" src="https://github.com/user-attachments/assets/5501a5ef-e16b-4fc7-abdd-6a5f855ec722" />
+<img width="895" height="586" alt="Screenshot 2025-10-05 210103" src="https://github.com/user-attachments/assets/cc414cde-430a-4e75-8d01-2154b072eacb" />
 
 
-Features:
+##Transmit:##
 
-Set target temperature (set temp)
-
-Start/stop temperature logging
-
-Command validation and echo feedback
+    HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+    Receive (interrupt-based):
+    void interruptRxTx(UART_HandleTypeDef *huart, UartInfo *uart);
 
 
-Figure 6: UART communication example
+##Features:##
+
+    Set target temperature (set temp)
+    Start/stop temperature logging
+    Command validation and echo feedback
+
 
 Temperature Measurement
 
