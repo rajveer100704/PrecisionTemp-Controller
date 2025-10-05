@@ -59,7 +59,7 @@ The MCU uses **Timer 2 output compare** to trigger the TRIAC based on zero-cross
 
 *Figure 4: Output compare mode on Timer 2*
 ---
-#### Key Functions
+**Key Functions**
 ```c
 void update_CCR3(uint32_t CCR1);
 void TriacTriggerCallback(CCRxData *ccr3Data);
@@ -79,7 +79,7 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
 
 *Figure 5: Negative gate trigger for TRIAC with lamp load*
 ---
-*Testing TRIAC Firing Angle*
+**Testing TRIAC Firing Angle**
 
     config_pulse(&ccr3Data, i, 40);
     if(resetState == false)
@@ -108,21 +108,21 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
     <img width="895" height="586" alt="Screenshot 2025-10-05 210103" src="https://github.com/user-attachments/assets/cc414cde-430a-4e75-8d01-2154b072eacb" />
 
 ---
-##Transmit:##
+**Transmit:**
 
     HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
     Receive (interrupt-based):
     void interruptRxTx(UART_HandleTypeDef *huart, UartInfo *uart);
 
 ---
-##Features:##
+**Features:**
 
     Set target temperature (set temp)
     Start/stop temperature logging
     Command validation and echo feedback
 
 ---
-##Temperature Measurement##
+**Temperature Measurement**
 
     SPI interface with MAX6675
     Resolution: 0.25°C
@@ -132,13 +132,13 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
      float calculateTemp(uint8_t *TempData);
 
 ---
-##Function:
+**Function:**
     
     int findPIDValue(PidInfo *pidInfo, double actualTemp, uint32_t currentTime);
     Inputs: actual temperature, target temperature, PID constants (Kp, Ki, Kd)
     Output: firing angle for TRIAC
 ---
-##PID Tuning Method:
+**PID Tuning Method:**
 
     Start with Kp, Ki, Kd = 0
     Increase Kp until oscillation is observed
@@ -146,7 +146,7 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
     Adjust Kd to reduce overshoot
 
 ---
-##Temperature Data:
+**Temperature Data:**
 
 | Time (s) | Target Temp (°C) | Measured Temp (°C) | Firing Angle (°) |
 |----------|-----------------|------------------|----------------|
@@ -163,4 +163,6 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
 | 100      | 80              | 80.1             | 140            |
 | 110      | 80              | 80.0             | 135            |
 | 120      | 80              | 80.0             | 130            |
+
+**Graph**
 
