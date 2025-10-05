@@ -38,14 +38,13 @@ This project can be applied to **ovens, heaters, and temperature-critical embedd
 The zero-crossing circuit outputs a rising/falling edge whenever the AC input crosses 0V. It uses a **comparator (LM311N)** and **opto-coupler (4N25)** for isolation.
 
 <img width="871" height="566" alt="Screenshot 2025-10-05 185638" src="https://github.com/user-attachments/assets/14120671-5f2a-45cf-a1e7-1efec7600cc6" />
-d01dab615a0d020cbee4e42/32897f1bd7d5a39010b1fb5553a9e847/image.png)
 *Figure 2: Zero-crossing detection circuit*
 
 **Output Example:**  
 - Rising/falling edge occurs ~96.7 μs after zero-cross detection  
 - Voltage swings from 0–3.3V for MCU logic input  
 
-![Zero Crossing Signal](https://trello-attachments.s3.amazonaws.com/5cee4d3b0bae3033dfba95f5/5d01dab615a0d020cbee4e42/48656ec15a5fe8f167287848f5ee5d28/image.png)
+
 *Figure 3: Input AC vs zero-cross output signal*
 
 ---
