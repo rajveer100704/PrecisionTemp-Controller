@@ -169,10 +169,11 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
 
 **References**
 
-    [!4N25 Vishay Datasheet|(https://www.vishay.com/docs/83725/4n25.pdf)
-    LM311 Datasheet
-    STM32F103 Reference Manual
-    MAX6675 Datasheet
-    Elprocus. “How Does a PID Controller Work?” (2018)
+    - [→ 4N25 Vishay Datasheet](https://www.vishay.com/docs/83725/4n25.pdf)
+    - [→ LM311 Datasheet](https://www.ti.com/lit/ds/symlink/lm211.pdf)
+    - [→ STM32F103 Reference Manual](https://www.st.com/resource/en/reference_manual/CD00171190.pdf)
+    - [→ MAX6675 Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/max6675.pdf)
+    - [→ Elprocus: “How Does a PID Controller Work?” (2018)](https://www.elprocus.com/pid-controller-working-principle/)
+
 
 
