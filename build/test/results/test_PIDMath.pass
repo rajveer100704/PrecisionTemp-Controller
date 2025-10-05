@@ -1,0 +1,28 @@
+---
+:source:
+  :path: test
+  :file: test_PIDMath.c
+:successes:
+- :test: test_FindPIDValue
+  :line: 25
+  :message: ''
+- :test: test_FindPIDValueNegativeCurrentError
+  :line: 41
+  :message: ''
+- :test: test_FindPIDValueWithPIDIntegrate
+  :line: 58
+  :message: ''
+- :test: test_FindPIDValueWithPIDIntegrateAndAvoidPIDValueOver180
+  :line: 84
+  :message: ''
+- :test: test_FindPIDValueWithPIDInWithinRange
+  :line: 112
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 5
+  :passed: 5
+  :failed: 0
+  :ignored: 0
+:stdout: []
