@@ -72,7 +72,7 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
 ##HAL_TIM_OC_Start_IT: Enables timer interrupt
 
 ```
-TRIAC Triggering Circuit
+
 -<img width="553" height="483" alt="Screenshot 2025-10-05 204422" src="https://github.com/user-attachments/assets/fd66f3c3-d47f-43c7-9ca3-fbb66ad66a6c" />
 
 -<img width="549" height="516" alt="Screenshot 2025-10-05 204501" src="https://github.com/user-attachments/assets/3908bf39-cb1a-4845-ac35-4a024d3552b1" />
