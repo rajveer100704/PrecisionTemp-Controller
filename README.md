@@ -64,3 +64,8 @@ void update_CCR3(uint32_t CCR1);
 void TriacTriggerCallback(CCRxData *ccr3Data);
 void config_pulse(CCRxData *ccr3Data, uint32_t firingAngle, uint32_t width);
 HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
+
+##update_CCR3: Updates timer CCR register for next pulse
+##TriacTriggerCallback: Interrupt triggered at CNT==0 and CNT==CCR3
+##config_pulse: Calculates firing angle and pulse width
+##HAL_TIM_OC_Start_IT: Enables timer interrupt
