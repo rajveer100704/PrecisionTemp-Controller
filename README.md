@@ -1,4 +1,4 @@
-# PrecisionTemp Controller
+<img width="1789" height="1008" alt="image" src="https://github.com/user-attachments/assets/7d75545b-be78-40f1-a55c-f225288a44f7" /><img width="1789" height="1008" alt="image" src="https://github.com/user-attachments/assets/c2a47393-f09d-49bf-8e33-b0207ddc5fdc" /># PrecisionTemp Controller
 
 ## Overview
 **PrecisionTemp Controller** is an MCU-based heating system developed using **STM32F103** microcontrollers. It implements a **PID control algorithm** to maintain a target temperature, allowing users to set and monitor temperature via **UART communication** with a PC.  
@@ -58,7 +58,7 @@ The MCU uses **Timer 2 output compare** to trigger the TRIAC based on zero-cross
  <img width="529" height="473" alt="Screenshot 2025-10-05 203655" src="https://github.com/user-attachments/assets/07810583-d686-4f05-a341-bc487ef99682" />
 
 *Figure 4: Output compare mode on Timer 2*
-
+---
 #### Key Functions
 ```c
 void update_CCR3(uint32_t CCR1);
@@ -78,7 +78,7 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
 -<img width="549" height="516" alt="Screenshot 2025-10-05 204501" src="https://github.com/user-attachments/assets/3908bf39-cb1a-4845-ac35-4a024d3552b1" />
 
 *Figure 5: Negative gate trigger for TRIAC with lamp load*
-
+---
 *Testing TRIAC Firing Angle*
 
     config_pulse(&ccr3Data, i, 40);
@@ -95,71 +95,72 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
     HAL_Delay(500);
 
 
-Firing angle tested from 0° → 150° and back using HAL_Delay
+    Firing angle tested from 0° → 150° and back using HAL_Delay
 
-Pulse width + firing angle limited < 165° to avoid firing next AC cycle
+    Pulse width + firing angle limited < 165° to avoid firing next AC cycle
 
-UART Communication
+    UART Communication
 
-MCU communicates with PC via UART:
+    MCU communicates with PC via UART:
 
-<img width="1200" height="711" alt="Screenshot 2025-10-05 210003" src="https://github.com/user-attachments/assets/cf1673fa-1955-4ff8-a5d8-0401f5a2ec5f" />
-<img width="970" height="561" alt="Screenshot 2025-10-05 210030" src="https://github.com/user-attachments/assets/5501a5ef-e16b-4fc7-abdd-6a5f855ec722" />
-<img width="895" height="586" alt="Screenshot 2025-10-05 210103" src="https://github.com/user-attachments/assets/cc414cde-430a-4e75-8d01-2154b072eacb" />
+    <img width="1200" height="711" alt="Screenshot 2025-10-05 210003" src="https://github.com/user-attachments/assets/cf1673fa-1955-4ff8-a5d8-0401f5a2ec5f" />
+    <img width="970" height="561" alt="Screenshot 2025-10-05 210030" src="https://github.com/user-attachments/assets/5501a5ef-e16b-4fc7-abdd-6a5f855ec722" />
+    <img width="895" height="586" alt="Screenshot 2025-10-05 210103" src="https://github.com/user-attachments/assets/cc414cde-430a-4e75-8d01-2154b072eacb" />
 
-
+---
 ##Transmit:##
 
     HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
     Receive (interrupt-based):
     void interruptRxTx(UART_HandleTypeDef *huart, UartInfo *uart);
 
-
+---
 ##Features:##
 
     Set target temperature (set temp)
     Start/stop temperature logging
     Command validation and echo feedback
 
+---
+##Temperature Measurement##
 
-Temperature Measurement
+    SPI interface with MAX6675
+    Resolution: 0.25°C
 
-SPI interface with MAX6675
+    Functions:
+     float getTemp(SPI_HandleTypeDef *hspi);
+     float calculateTemp(uint8_t *TempData);
 
-Resolution: 0.25°C
+---
+##Function:
+    
+    int findPIDValue(PidInfo *pidInfo, double actualTemp, uint32_t currentTime);
+    Inputs: actual temperature, target temperature, PID constants (Kp, Ki, Kd)
+    Output: firing angle for TRIAC
+---
+##PID Tuning Method:
 
-Functions:
+    Start with Kp, Ki, Kd = 0
+    Increase Kp until oscillation is observed
+    Adjust Ki to stabilize integral
+    Adjust Kd to reduce overshoot
 
-float getTemp(SPI_HandleTypeDef *hspi);
-float calculateTemp(uint8_t *TempData);
+---
+##Temperature Data:
 
+| Time (s) | Target Temp (°C) | Measured Temp (°C) | Firing Angle (°) |
+|----------|-----------------|------------------|----------------|
+| 0        | 25              | 25.0             | 0              |
+| 10       | 25              | 27.3             | 10             |
+| 20       | 25              | 30.5             | 15             |
+| 30       | 25              | 34.2             | 20             |
+| 40       | 25              | 38.0             | 25             |
+| 50       | 80              | 45.6             | 50             |
+| 60       | 80              | 55.2             | 70             |
+| 70       | 80              | 65.4             | 90             |
+| 80       | 80              | 73.0             | 110            |
+| 90       | 80              | 79.2             | 130            |
+| 100      | 80              | 80.1             | 140            |
+| 110      | 80              | 80.0             | 135            |
+| 120      | 80              | 80.0             | 130            |
 
-
-Figure 7: Testing getTemp function
-
-PID Control
-
-Function:
-
-int findPIDValue(PidInfo *pidInfo, double actualTemp, uint32_t currentTime);
-
-
-Inputs: actual temperature, target temperature, PID constants (Kp, Ki, Kd)
-
-Output: firing angle for TRIAC
-
-PID Tuning Method:
-
-Start with Kp, Ki, Kd = 0
-
-Increase Kp until oscillation is observed
-
-Adjust Ki to stabilize integral
-
-Adjust Kd to reduce overshoot
-
-Demo Videos:
-
-Kp=10, Ki=0.2, Kd=0: YouTube Demo
-
-Kp=10, Ki=0.2, Kd=0.5: YouTube Demo
