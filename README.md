@@ -169,7 +169,7 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
 
 **References**
 
-    4N25 Vishay Datasheet|(https://www.vishay.com/docs/83725/4n25.pdf)
+    [!4N25 Vishay Datasheet|(https://www.vishay.com/docs/83725/4n25.pdf)
     LM311 Datasheet
     STM32F103 Reference Manual
     MAX6675 Datasheet
