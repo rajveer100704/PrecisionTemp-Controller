@@ -95,7 +95,7 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
     HAL_Delay(500);
 
 
-##Firing angle tested from 0° → 150° and back using HAL_Delay
+Firing angle tested from 0° → 150° and back using HAL_Delay
 
 Pulse width + firing angle limited < 165° to avoid firing next AC cycle
 
