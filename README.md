@@ -164,5 +164,15 @@ HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_1);
 | 110      | 80              | 80.0             | 135            |
 | 120      | 80              | 80.0             | 130            |
 
-**Graph**
+**Graph : **
+<img width="1789" height="1008" alt="Screenshot 2025-10-05 212312" src="https://github.com/user-attachments/assets/8a44e685-cec4-46d9-9037-945627f6bb5e" />
+
+**References**
+
+    4N25 Vishay Datasheet|(https://www.vishay.com/docs/83725/4n25.pdf)
+    LM311 Datasheet
+    STM32F103 Reference Manual
+    MAX6675 Datasheet
+    Elprocus. “How Does a PID Controller Work?” (2018)
+
 
